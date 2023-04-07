@@ -7,8 +7,22 @@
     - Provided origin and destination parameters are checked whether they are present in the database or not. So that relevant message can be returned in response.
 
 
+# Some Assumptions and Considerations for Regions-Children Tree
+When a region slug is passed as origin/destination we need to traverse its tree to get all its child regions (If applicable). And then we will select the port codes of the passed region and as well as port codes of its child regions (If applicable).
+
+For Example:
+when "CNSGH" is passed as origin and "scandinavia" is passed as destination. We get all child regions of "scandinavia". Which are:  
+- 1. "kattegat"  
+- 2. "norway_north_west"  
+- 3. "norway_south_east"  
+- 4. "norway_south_west"  
+- 5. "stockholm_area" 
+
+And then get the port codes of "scandinavia" and its child regions 1-5. And then query  average prices per day between geographic groups of ports.
+
+
 # Tests
-The development approach was TDD. Tests are implemented for shared utility methods and API endpoint. Tests can be found at *src/tests*. 
+The development approach was TDD. Tests are implemented for shared utility methods and API endpoint. Tests can be found in directory *src/tests*. 
 
 ![tests](./assets/tests.png)
 
@@ -21,7 +35,7 @@ The development approach was TDD. Tests are implemented for shared utility metho
 │   ├── api
 │   │   ├── __init__.py
 │   │   ├── models
-│   │   │   └── rates.py        # (Model for API endpoint)
+│   │   │   └── rates.py        # (Response Model for API endpoint)
 │   │   ├── routes
 │   │   │   └── rates.py        # (API endpoint)
 │   │   └── utils               # (Shared utility methods)
