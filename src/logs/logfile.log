@@ -1,0 +1,5 @@
+[2023-04-07 13:26:17,083.083] INFO [139920869542728] - ------API is live------
+[2023-04-07 13:26:17,135.135] INFO [139920869542728] - Connected to database postgresql://hassan:********@db/mydb_dev
+[2023-04-07 13:26:17,209.209] INFO [139920869542728] - **Region slugs traversed and stored into memory**
+[2023-04-07 13:26:17,217.217] INFO [139920869542728] - **Ports codes stored into memory**
+[2023-04-07 14:01:56,364.364] INFO [139920869542728] - Disconnected from database postgresql://hassan:********@db/mydb_dev

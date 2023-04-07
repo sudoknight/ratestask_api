@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./src
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    volumes:
+      - ./src/:/usr/src/app/
+    ports:
+      - 8002:8000
+    environment:
+      - DATABASE_URL=postgresql://hassan:lifeneedshope@db/mydb_dev
+
+  db:
+    image: postgres:12
+    volumes:
+      - ./sql_data/:/docker-entrypoint-initdb.d/
+    environment:
+      - POSTGRES_USER=hassan
+      - POSTGRES_PASSWORD=lifeneedshope
+      - POSTGRES_DB=mydb_dev
+    ports:
+      - 5432:5432
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 5050:80

@@ -1,0 +1,9 @@
+databases[asyncpg]==0.6.2
+fastapi==0.88.0
+uvicorn==0.20.0
+psycopg2-binary==2.9.5
+# dev
+pytest==7.2.0
+pytest-asyncio==0.21.0
+httpx==0.23.1
+
