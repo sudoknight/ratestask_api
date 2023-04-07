@@ -25,14 +25,12 @@ async def get_rates(
     origin: str = Query(
         min_length=5,
         max_length=20,
-        default="CNSGH",
-        description="Origin can be port (5-character origin port code) or a slug (A machine-readable form of the region name)",
+        description="Origin can be port (5-character origin port code like: CNSGH) or a slug (A machine-readable form of the region name like: north_europe_main)",
     ),
     destination: str = Query(
         min_length=5,
         max_length=20,
-        default="north_europe_main",
-        description="Destination can be port (5-character origin port code) or a slug (A machine-readable form of the region name)",
+        description="Destination can be port (5-character origin port code like: CNSGH) or a slug (A machine-readable form of the region name like: north_europe_main)",
     ),
 ):
     """Returns average price per day between those source and destination ports where at least three reocrds are available.
