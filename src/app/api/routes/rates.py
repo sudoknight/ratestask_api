@@ -14,13 +14,11 @@ logger = logging.getLogger(__name__)
 async def get_rates(
     date_from: str = Query(
         regex=r"^[\d]{4}\-[\d]{1,2}\-[\d]{1,2}$",
-        default="2016-01-01",
-        description="Starting date",
+        description="Starting date using format YYYY-MM-DD. For example: 2016-01-01",
     ),
     date_to: str = Query(
         regex=r"^[\d]{4}\-[\d]{1,2}\-[\d]{1,2}$",
-        default="2016-01-10",
-        description="Ending date",
+        description="Ending date using format YYYY-MM-DD. For example: 2016-01-10",
     ),
     origin: str = Query(
         min_length=5,
@@ -110,6 +108,5 @@ async def get_prices(date_from, date_to, origin, destination) -> List[RatesSchem
         origin="','".join(origin),
         destination="','".join(destination),
     )
-    logger.info(query)
     res = await crud.get(query)  # get prices
     return res
