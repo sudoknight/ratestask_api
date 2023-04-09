@@ -22,7 +22,13 @@ And then get the port codes of "scandinavia" and its child regions 1-5. And then
 
 
 # Tests
-The development approach was TDD. Tests are implemented for shared utility methods and API endpoint. Tests can be found in directory *src/tests*. 
+The development approach was TDD. Tests are implemented for shared utility methods and API endpoint. Tests can be found in directory *src/tests*.  
+<br>
+Execute the below command after running the docker-compose up. (Make sure you are in the same directory where docker-compose.yml is located.)
+
+```
+docker-compose exec web pytest .
+``` 
 
 ![tests](./assets/tests.png)
 
